@@ -14,7 +14,8 @@ from .forms import PostForm, EditForm
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
-    ordering = ['-id']
+    ordering = ['-post_date']
+    # ordering = ['-id']
 
 
 class ArticleDetailView(DetailView):
