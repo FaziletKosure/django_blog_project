@@ -6,7 +6,7 @@
 <ul>
 {% for post in object_list %}
 <li>
-   <a href=" {% url 'article-detail' post.pk %} "> {{post.title}}</a>  - {{post.author.first_name}}  {{post.author.last_name}} <br>
+   <a href=" {% url 'article-detail' post.pk %} "> {{post.title}}</a>  - {{post.author.first_name}}  {{post.author.last_name}} - <a href="{% url 'update_post' post.pk%}"><i class='far fa-edit' style='font-size:18px'></i></a> - <a href="{% url 'delete_post' post.pk%}"><i class='far fa-trash-alt' style='font-size:24px'></i></a> <br>
     {{post.body}} 
 </li>
 {% endfor %}
