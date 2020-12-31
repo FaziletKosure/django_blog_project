@@ -11,7 +11,11 @@
    - <a href="{% url 'category' post.category|slugify %}">{{post.category}}</a> 
    - {{post.author.first_name}}  {{post.author.last_name}} - {{post.post_date}} 
    {% if user.is_authenticated %}
+    
+      {% if user.id == post.author.id %}
+          
    <a href="{% url 'update_post' post.pk%}"><i class='far fa-edit' style='font-size:18px'></i></a> - <a href="{% url 'delete_post' post.pk%}"><i class='far fa-trash-alt' style='font-size:24px'></i></a>
+      {% endif %}
   {% endif %}
 
    <br>

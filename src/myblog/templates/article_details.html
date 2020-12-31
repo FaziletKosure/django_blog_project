@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<h1>{{post.title}}</h1>
+<h1>{{post.title}} - {{post.author.id}}</h1>
 <br>
 <small>By: {{post.author.first_name}} {{post.author.last_name}}
     - {{post.post_date}}
@@ -21,6 +21,18 @@
 
 <br><br>
 <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+
+<br><br>
+<hr>
+<br>
+
+<form action="{% url 'like_post' post.pk %}" method="POST">
+
+    {% csrf_token %}
+
+    <button style="font-size:24px" type="submit" name="post_id" value="{{post.id}}" class="btn btn-info btn-lg"><i class="fa fa-thumbs-o-up" style="font-size:24px"> Like</i></button> - {{ total_likes }} Likes
+    
+</form>
 {% endblock content %}
 
 
