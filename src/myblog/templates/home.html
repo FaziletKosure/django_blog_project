@@ -20,6 +20,10 @@
 
    <br>
    <br>
+   {% if post.header_image %}
+    <img src="{{  post.header_image.url }}"><br><br>
+{% endif %}
+ 
   
     {{post.body |safe |slice:":200"}}  <a href=" {% url 'article-detail' post.pk %} ">Read More</a>
 </li>

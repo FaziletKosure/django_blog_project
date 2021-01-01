@@ -20,7 +20,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     header_image = models.ImageField(
-        null=True, blank=True, upload_to="images/")
+        null=True, blank=True, upload_to="images/", default='django.jpg')
     title_tag = models.CharField(
         max_length=255, default='Welcom To My Awesome Blog!')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
