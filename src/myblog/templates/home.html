@@ -24,8 +24,8 @@
     <img src="{{  post.header_image.url }}"><br><br>
 {% endif %}
  
-  
-    {{post.body |safe |slice:":200"}}  <a href=" {% url 'article-detail' post.pk %} ">Read More</a>
+   {{post.snippet}}
+      <a href=" {% url 'article-detail' post.pk %} ">Read More</a>
 </li>
 <hr>
 {% endfor %}
