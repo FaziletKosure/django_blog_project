@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor',
     'members.apps.MembersConfig',
     'myblog.apps.MyblogConfig',
     'django.contrib.admin',
