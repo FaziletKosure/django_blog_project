@@ -9,10 +9,10 @@
     - {{post.post_date}}
 </small> 
 {% if user.is_authenticated %}
-{% if user.id == post.author.id %}
+  {% if user.id == post.author.id %}
 - 
 <a href="{% url 'update_post' post.pk%}"><i class='far fa-edit' style='font-size:24px'></i></a> - <a href="{% url 'delete_post' post.pk%}"><i class='far fa-trash-alt' style='font-size:24px'></i></a> 
-{% endif %}
+  {% endif %}
 {% endif %}
 <br>
 <hr>
@@ -32,8 +32,18 @@
 <form action="{% url 'like_post' post.pk %}" method="POST">
 
     {% csrf_token %}
-
-    <button style="font-size:24px" type="submit" name="post_id" value="{{post.id}}" class="btn btn-info btn-lg"><i class="fa fa-thumbs-o-up" style="font-size:24px"> Like</i></button> - {{ total_likes }} Likes
+{% if user.is_authenticated %}
+    {% if liked %}
+      <button style="font-size:24px" type="submit" name="post_id" value="{{post.id}}" class="btn btn-info btn-lg"><i class="fa fa-thumbs-o-down" style="font-size:24px"> Unlike</i></button>
+    {% else %}
+      <button style="font-size:24px" type="submit" name="post_id" value="{{post.id}}" class="btn btn-info btn-lg"><i class="fa fa-thumbs-o-up" style="font-size:24px"> Like</i></button>
+    {% endif %}
+{% else %}
+<small> <a class="nav-link" href="{% url 'login' %}">Login</a> to like</small>
+{% endif %}
+    
+    
+    - {{ total_likes }} Likes
     
 </form>
 {% endblock content %}
