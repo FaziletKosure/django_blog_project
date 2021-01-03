@@ -6,6 +6,8 @@ from ckeditor.fields import RichTextField
 
 # Create your models here.
 
+#  CATEGORY MODEL
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -17,7 +19,28 @@ class Category(models.Model):
         # return reverse('article-detail', args=(str(self.id)))
         return reverse('home')
 
+# PROFILE MODEL
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_pic = models.ImageField(
+        null=True, blank=True, upload_to="images/profile/")
+    website_url = models.CharField(max_length=255, null=True, blank=True)
+    facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True)
+    pinterest_url = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('home')
+
+
+#  POST MODEL
 class Post(models.Model):
     title = models.CharField(max_length=255)
     header_image = models.ImageField(
