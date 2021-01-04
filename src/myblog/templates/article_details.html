@@ -51,10 +51,11 @@
   <div class="row no-gutters">
     <div class="col-md-2">
 {% if post.author.profile.profile_pic %}
-      <img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
-
+	<img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
+  
 {% else %}
-	
+{% load static %}
+	<img class="card-img" src="{% static 'myblog/images/default_profile_pic.png' %}"  >
 {% endif %}
     </div>
     <div class="col-md-10">
